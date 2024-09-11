@@ -41,6 +41,8 @@ struct LrcLib {
             ])
     }
     
+    /// Get a lyrics record by an absolute ID. ID of a lyrics record can be retrieved from other APIs, such as
+    /// `search()` API.
     public static func get(id: Int) async throws -> LyricRecord {
 //        Making URLs with string interpolation is bad but it's just an Int so we'll live
         let endpoint = "/get/\(id)"

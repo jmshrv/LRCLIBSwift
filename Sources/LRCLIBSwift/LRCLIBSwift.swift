@@ -50,6 +50,44 @@ struct LrcLib {
         return try await request(endpoint)
     }
     
+    /// Search for lyrics records using keywords. This API returns an array of lyrics records that match the specified
+    /// search condition(s).
+    ///
+    /// At least ONE of the two parameters, `query` OR `trackName`, must be present.
+    ///
+    /// **Note**: This API currently returns a maximum of 20 results and does not support pagination. These limitations
+    /// are subject to change in the future. 
+    public static func search(
+        query: String? = nil,
+        trackName: String? = nil,
+        artistName: String? = nil,
+        albumName: String? = nil
+    ) async throws -> [LyricRecord] {
+        guard query != nil || trackName != nil else {
+            throw LrcLibError.searchBothNil
+        }
+        
+        var queryItems: [URLQueryItem] = []
+        
+        if let query {
+            queryItems.append(.init(name: "q", value: query))
+        }
+        
+        if let trackName {
+            queryItems.append(.init(name: "track_name", value: trackName))
+        }
+        
+        if let artistName {
+            queryItems.append(.init(name: "artist_name", value: artistName))
+        }
+        
+        if let albumName {
+            queryItems.append(.init(name: "album_name", value: albumName))
+        }
+        
+        return try await request("/search", queryItems: queryItems)
+    }
+    
     private static func request<T: Decodable>(_ endpoint: String, queryItems: [URLQueryItem] = []) async throws -> T {
         let route = baseUrl
             .appending(path: endpoint)

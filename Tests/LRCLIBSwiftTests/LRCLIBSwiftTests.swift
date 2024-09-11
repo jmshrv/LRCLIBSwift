@@ -44,3 +44,24 @@ import Testing
     #expect(actual.albumName == "Welcome to the Black Parade")
     #expect(actual.duration == 311)
 }
+
+@Test func searchQuery() async throws {
+    let actual = try await LrcLib.search(query: "still alive portal")
+    
+    #expect(!actual.isEmpty)
+}
+
+@Test func searchMultipleFields() async throws {
+    let actual = try await LrcLib.search(
+        trackName: "22",
+        artistName: "taylor swift"
+    )
+    
+    #expect(!actual.isEmpty)
+}
+
+@Test func searchInvalidParams() async throws {
+    await #expect(throws: LrcLibError.searchBothNil) {
+        try await LrcLib.search()
+    }
+}

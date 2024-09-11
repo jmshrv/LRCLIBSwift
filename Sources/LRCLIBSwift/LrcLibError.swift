@@ -10,4 +10,7 @@ enum LrcLibError: Error, Equatable {
     ///
     /// - Parameter responseCode: The returned response code.
     case httpErrorCode(_ responseCode: Int)
+    
+    /// In the `search` function, both `query` and `trackName` were nil. At least one is required.
+    case searchBothNil
 }

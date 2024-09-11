@@ -6,10 +6,10 @@ import PackageDescription
 let package = Package(
     name: "LRCLIBSwift",
     platforms: [
-        .iOS(.v15),
-        .macOS(.v12),
-        .watchOS(.v8),
-        .tvOS(.v15),
+        .iOS(.v16),
+        .macOS(.v13),
+        .watchOS(.v9),
+        .tvOS(.v16),
         .visionOS(.v1)
     ],
     products: [
@@ -23,6 +23,11 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "LRCLIBSwift"),
+        .testTarget(
+            name: "LRCLIBSwiftTests",
+            dependencies: ["LRCLIBSwift"]
+        ),
 
-    ]
+    ],
+    swiftLanguageModes: [.v6]
 )

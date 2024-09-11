@@ -23,3 +23,14 @@ import Testing
     #expect(actual.albumName == "Welcome to the Black Parade")
     #expect(actual.duration == 311)
 }
+
+@Test func getNotFound() async throws {
+    await #expect(throws: LrcLibError.httpErrorCode(404)) {
+        try await LrcLib.get(
+            trackName: "invalid",
+            artistName: "invalid",
+            albumName: "invalid",
+            duration: 1
+        )
+    }
+}

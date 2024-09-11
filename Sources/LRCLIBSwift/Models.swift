@@ -5,7 +5,7 @@
 //  Created by James on 11/09/2024.
 //
 
-public struct LyricRecord: Codable, Equatable, Identifiable {
+public struct LyricRecord: Codable, Equatable, Identifiable, Hashable {
     public let id: Int64
     public let name: String?
     public let trackName: String?

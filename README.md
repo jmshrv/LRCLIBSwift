@@ -7,6 +7,8 @@ A [LRCLIB](https://lrclib.net) API client for Swift.
 All methods in `LrcLib` are static, and can be accessed like so:
 
 ```swift
+import LRCLIBSwift
+
 let lyricsByField = try await LrcLib.get(
     trackName: "Welcome to the Black Parade",
     artistName: "My Chemical Romance",

@@ -5,14 +5,14 @@
 //  Created by James on 11/09/2024.
 //
 
-struct LyricRecord: Codable, Equatable, Identifiable {
-    let id: Int64
-    let name: String?
-    let trackName: String?
-    let artistName: String?
-    let albumName: String?
-    let duration: Double?
-    let instrumental: Bool
-    let plainLyrics: String?
-    let syncedLyrics: String?
+public struct LyricRecord: Codable, Equatable, Identifiable {
+    public let id: Int64
+    public let name: String?
+    public let trackName: String?
+    public let artistName: String?
+    public let albumName: String?
+    public let duration: Double?
+    public let instrumental: Bool
+    public let plainLyrics: String?
+    public let syncedLyrics: String?
 }

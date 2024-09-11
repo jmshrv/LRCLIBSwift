@@ -9,7 +9,7 @@ import Foundation
 
 /// A LRCLIB client. All methods are accessed statically - LRCLIB doesn't need any state to be kept. Documentation for
 /// each function is largely copied from https://lrclib.net/docs and adapted for this package.
-struct LrcLib {
+public struct LrcLib {
     private static let baseUrl = URL(string: "https://lrclib.net/api")!
     
     private static let userAgent = "LRCLIBSwift v1.0.0 (https://github.com/jmshrv/LRCLIBSwift)"

@@ -34,3 +34,13 @@ import Testing
         )
     }
 }
+
+@Test func getById() async throws {
+    let actual = try await LrcLib.get(id: 571883)
+    
+    #expect(actual.id == 571883)
+    #expect(actual.trackName == "Welcome to the Black Parade")
+    #expect(actual.artistName == "My Chemical Romance")
+    #expect(actual.albumName == "Welcome to the Black Parade")
+    #expect(actual.duration == 311)
+}

@@ -41,6 +41,13 @@ struct LrcLib {
             ])
     }
     
+    public static func get(id: Int) async throws -> LyricRecord {
+//        Making URLs with string interpolation is bad but it's just an Int so we'll live
+        let endpoint = "/get/\(id)"
+        
+        return try await request(endpoint)
+    }
+    
     private static func request<T: Decodable>(_ endpoint: String, queryItems: [URLQueryItem] = []) async throws -> T {
         let route = baseUrl
             .appending(path: endpoint)
@@ -48,6 +55,7 @@ struct LrcLib {
         
         var request = URLRequest(url: route)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(userAgent, forHTTPHeaderField: "User-Agent")
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
